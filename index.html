@@ -29,28 +29,7 @@
         background-color: rgba(255, 255, 255, 0.9);
     }
     }
-/* ----------------------------------------------- */
    
-    #viewer {
-      width: 500px;
-      height: 500px;
-      overflow: hidden;
-      position: relative;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      cursor: grab;
-    }
-    #viewer img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      display: none;
-    }
-    #viewer img.active {
-      display: block;
-    }
-
 /* Banner container */
 .banner {
   position: relative;
@@ -258,10 +237,10 @@
                       <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Specifications</a>
+                      <a class="nav-link" href="#Features" onclick="openTab(event, 'pills-Features')">Specifications</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Features</a>
+                      <a class="nav-link" href="#Features" onclick="openTab(event, 'pills-Overview')">Features</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Price</a>
@@ -469,14 +448,14 @@
 </section>
 
   
-<section>
+<section ID="Features">
 	<div class="container">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="pills-Overview-tab" data-bs-toggle="pill" data-bs-target="#pills-Overview" type="button" role="tab" aria-controls="pills-Overview" aria-selected="true">Features</button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-Features-tab" data-bs-toggle="pill" data-bs-target="#pills-Features" type="button" role="tab" aria-controls="pills-Features" aria-selected="false">Specifications</button>
+              <button class="nav-link" id="pills-Features-tab Specifications" data-bs-toggle="pill" data-bs-target="#pills-Features" type="button" role="tab" aria-controls="pills-Features" aria-selected="false">Specifications</button>
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
@@ -614,7 +593,33 @@
       });
   </script>
 
+<script>
+  // Function to open a specific tab and scroll to the section
+  function openTab(event, tabId) {
+      event.preventDefault();
 
+      // Scroll to the Features section
+      document.getElementById("Features").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+      });
+
+      // Open the specified tab
+      const tabs = document.querySelectorAll('.tab-pane');
+      tabs.forEach(tab => tab.classList.remove('show', 'active'));
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => link.classList.remove('active'));
+
+      const targetTab = document.getElementById(tabId);
+      const targetButton = document.querySelector(`[data-bs-target="#${tabId}"]`);
+
+      if (targetTab && targetButton) {
+          targetTab.classList.add('show', 'active');
+          targetButton.classList.add('active');
+      }
+  }
+</script>
 
     <script>
           var className = "inverted";
