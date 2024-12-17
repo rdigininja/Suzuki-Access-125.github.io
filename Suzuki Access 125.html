@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <title>Document</title>
+</head>
+<style>
+   
+    #viewer {
+      width: 500px;
+      height: 500px;
+      overflow: hidden;
+      position: relative;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      cursor: grab;
+    }
+    #viewer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      display: none;
+    }
+    #viewer img.active {
+      display: block;
+    }
+
+/* Banner container */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjusts the height of the banner */
+  background: url('img/Access-banner/banner333.webp') 
+              no-repeat center center; 
+  background-size: cover; /* Ensures the image covers the banner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carousel-item{
+  padding: 40px 10px;
+}
+
+.bg_section-1{
+ background-color: #ffffff;
+ padding: 40px 10px;
+}
+
+.bike-info span{
+    font-size: 15px;
+    font-weight:700;
+    color:#0512ce
+}
+.bike-info p{
+    font-size: 28px;
+    font-weight:500;
+}
+
+.bike-img img{
+    width:100%;
+}
+
+.bike-color ul li{
+    list-style: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    margin-bottom: 2px;
+}   
+.carousel-control-prev-icon ,.carousel-control-next-icon {
+    background-color: #000 !important;
+}
+.carousel-indicators [data-bs-target]{
+    background-color: #000 !important;
+}
+/* ======================== */
+.tabs {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+}
+
+.tab {
+	background: #404040;
+	cursor: pointer;
+	color: #CCC;
+	padding: 12px 15px;
+
+	&.tab--active {
+		background: tomato;
+		color: white;
+	}
+}
+
+.tab-content__section {
+	background: #efefef;
+}
+.section_padding{
+    padding: 50px 10px;
+}
+
+
+/* ========Form============== */
+.form-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            display: none;
+            margin: 10px 0 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            position: relative;
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background-color: #e66b40;
+        }
+
+
+        /* Bike Animation */
+        .bike {
+            position: absolute;
+            top: 50%;
+            left: -50px;
+            width: 40px;
+            height: 40px;
+            background: url('img/man.png') no-repeat center center;
+            background-size: contain;
+            animation: moveBike 2s ease-in-out forwards;
+        }
+
+        @keyframes moveBike {
+            0% {
+                left: -50px;
+                transform: translateY(-50%) rotate(0deg);
+            }
+            50% {
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(10deg);
+            }
+            100% {
+                left: 110%;
+                transform: translateY(-50%) rotate(0deg);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+/* =========================================== */
+
+/* Error Message */
+.error {
+    color: red;
+    font-size: 16px;
+    margin-top: 20px;
+    background-color: #f8d7da;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+/* Success Message */
+.success {
+    color: green;
+    font-size: 16px;
+    margin-top: 20px;
+    background-color: #d4edda;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+
+</style>
+</head>
+<body>
+
+  <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+            <a class="navbar-brand" href="#"><b>Access-125</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+                </ul>
+                <form class="d-flex">
+                <button class="btn btn-outline-success" type="submit">Book Now</button>
+                </form>
+            </div>
+            </div>
+        </nav>
+  </header>
+
+  <div class="banner">
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-12"></div>
+      <div class="col-md-6 col-lg-6 col-12">
+        <div class="form-container">
+          <h1>Book a Test Ride</h1>
+          <form id="testRideForm" action="send_mail.php" method="POST">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" placeholder="Your Name" required>
+  
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="Your Email" required>
+  
+              <label for="mobile">Mobile Number</label>
+              <input type="text" name="mobile" id="mobile" placeholder="Your Mobile Number" required>
+  
+              <label for="location">Select Location</label>
+              <select name="location" id="location" required>
+                  <option value="" disabled selected>Select your location</option>
+                  <option value="Andheri West">Andheri West</option>
+                  <option value="Andheri East">Andheri East</option>
+                  <option value="Ghatkopar">Ghatkopar</option>
+                  <option value="Thane">Thane</option>
+                  <option value="Borivali">Borivali</option>
+                  <option value="Goregaon">Goregaon</option>
+              </select>
+  
+              <button type="submit" id="submitButton">
+                Submit
+                <div class="bike hidden" id="bikeAnimation"></div>
+            </button>
+          </form>
+      </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+<section class="bg_section-1">
+   <div class="container">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+            
+                <div class="carousel-item active">
+                    <div class="text-center"><h2>ACCESS 125 Ride Connect Edition</h2></div>
+                    <div class="row">                       
+                        <div class="col-md-2 col-lg-2 col-12">
+                            <div class="bike-color">
+                                <h3>Color Editions</h3>
+                                <ul>
+                                    <li style="background-color: #650009;"> </li>
+                                    <li style="background-color: #584931;"> </li>
+                                    <li style="background-color: #ffffff;"> </li>
+                                    <li style="background-color: #000000;"> </li>
+                                    <li style="background-color: #587dad;"> </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 col-lg-7 col-12">
+                            <div class="bike-img">
+                                <img src="img/Access-banner/RideConnect_Edition_Glossy_White_Side_R01_P03-min_61b9ca4b40403.jpg" alt="" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-12">
+                            <div class="bike-info">
+                                <div class="">
+                                    <span>Engine Type</span>
+                                    <p>4- Stroke, 1-Cylinder, Air Cooled</p>
+                                </div>
+                                <div class="">
+                                    <span>Valve System</span>
+                                    <p>SOHC, 2-Valve</p>
+                                </div>
+                                <div class="">
+                                    <span>Displacement</span>
+                                    <p>124 cm³</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item ">
+                    <div class="text-center"><h2>Access 125 Special Edition</h2></div>
+                    <div class="row">
+                        <div class="col-md-2 col-lg-2 col-12">
+                            <div class="bike-color">
+                                <h3>Color Editions</h3>
+                                <ul>
+                                    <li style="background-color: #a58a71;"> </li>
+                                    <li style="background-color: #6c9795;"> </li>
+                                    <li style="background-color: #ffffff;"> </li>
+                                    <li style="background-color: #000000;"> </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 col-lg-7 col-12">
+                            <div class="bike-img">
+                                <img src="img/Access-banner/Special_Edition_green_White_Side_R01_P03-min_61b9e6e809bff.jpg" alt="" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-12">
+                            <div class="bike-info">
+                                <div class="">
+                                    <span>Engine Type</span>
+                                    <p>4- Stroke, 1-Cylinder, Air Cooled</p>
+                                </div>
+                                <div class="">
+                                    <span>Valve System</span>
+                                    <p>SOHC, 2-Valve</p>
+                                </div>
+                                <div class="">
+                                    <span>Displacement</span>
+                                    <p>124 cm³</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-item ">
+                    <div class="text-center"><h2>Access 125 Standard</h2></div>
+                    <div class="row">
+                        <div class="col-md-2 col-lg-2 col-12">
+                            <div class="bike-color">
+                                <h3>Color Editions</h3>
+                                <ul>
+                                    <li style="background-color: #a58a71;"> </li>
+                                    <li style="background-color: #6c9795;"> </li>
+                                    <li style="background-color: #ffffff;"> </li>
+                                    <li style="background-color: #000000;"> </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 col-lg-7 col-12">
+                            <div class="bike-img">
+                                <img src="img/Access-banner/12.png" alt="" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-12">
+                            <div class="bike-info">
+                                <div class="">
+                                    <span>Engine Type</span>
+                                    <p>4- Stroke, 1-Cylinder, Air Cooled</p>
+                                </div>
+                                <div class="">
+                                    <span>Valve System</span>
+                                    <p>SOHC, 2-Valve</p>
+                                </div>
+                                <div class="">
+                                    <span>Displacement</span>
+                                    <p>124 cm³</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+   </div>
+</section>
+
+    <main>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="swiper-slide-img">
+                  <img src="https://images.unsplash.com/photo-1543335785-8aadf6d8183c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="">
+                  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                  </svg>
+                </div>
+                <div class="swiper-slide-content">
+                  <div>
+                    <h2>louvre</h2>
+                    <p>National art museum in Paris, France. It is located on the Right Bank of the Seine in the city's 1st arrondissement (district or ward) and home to some of the most canonical works of Western art, including the Mona Lisa and the Venus de Milo.</p>
+                    <a class="show-more" href="https://en.wikipedia.org/wiki/Louvre" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+                      </svg></a>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-slide-img">
+                  <img src="https://images.unsplash.com/photo-1618822461310-da1be362e30c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
+                  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                  </svg>
+                </div>
+                <div class="swiper-slide-content">
+                  <div>
+                    <h2>seychelles</h2>
+                    <p>Officially the Republic of Seychelles is an island country and archipelagic state consisting of 155 islands in the Indian Ocean.</p>
+                    <a class="show-more" href="https://en.wikipedia.org/wiki/Seychelles" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+                      </svg></a>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-slide-img">
+                  <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80" alt="">
+                  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                  </svg>
+                </div>
+                <div class="swiper-slide-content">
+                  <div>
+                    <h2>london</h2>
+                    <p>The capital and largest city of England and the United Kingdom, with a population of around 8.8 million. It stands on the River Thames in south-east England at the head of a 50-mile (80 km) estuary down to the North Sea and has been a major settlement for nearly two millennia.</p>
+                    <a class="show-more" href="https://en.wikipedia.org/wiki/London" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+                      </svg></a>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-slide-img">
+                  <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80" alt="">
+                  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                  </svg>
+                </div>
+                <div class="swiper-slide-content">
+                  <div>
+                    <h2>maldives</h2>
+                    <p>Officially the Republic of Maldives is an archipelagic state and country in South Asia, situated in the Indian Ocean.</p>
+                    <a class="show-more" href="https://en.wikipedia.org/wiki/Maldives" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+                      </svg></a>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-slide-img">
+                  <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1886&q=80" alt="">
+                  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                  </svg>
+                </div>
+                <div class="swiper-slide-content">
+                  <div>
+                    <h2>Italy</h2>
+                    <p>Located in the middle of the Mediterranean Sea, it consists of a peninsula delimited by the Alps and surrounded by several islands. Italy shares land borders with France, Switzerland, Austria, Slovenia and the enclaved microstates of Vatican City and San Marino.</p>
+                    <a class="show-more" href="https://en.wikipedia.org/wiki/Italy" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+                      </svg></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+
+<section>
+	<div class="container">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-Overview-tab" data-bs-toggle="pill" data-bs-target="#pills-Overview" type="button" role="tab" aria-controls="pills-Overview" aria-selected="true">Overview</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-Features-tab" data-bs-toggle="pill" data-bs-target="#pills-Features" type="button" role="tab" aria-controls="pills-Features" aria-selected="false">Features</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-Accessories-tab" data-bs-toggle="pill" data-bs-target="#pills-Accessories" type="button" role="tab" aria-controls="pills-Accessories" aria-selected="false">Accessories</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-Specifications-tab" data-bs-toggle="pill" data-bs-target="#pills-Specifications" type="button" role="tab" aria-controls="pills-Specifications" aria-selected="false">Specifications</button>
+              </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-Overview" role="tabpanel" aria-labelledby="pills-Overview-tab">1...</div>
+            <div class="tab-pane fade" id="pills-Features" role="tabpanel" aria-labelledby="pills-Features-tab">2...</div>
+            <div class="tab-pane fade" id="pills-Accessories" role="tabpanel" aria-labelledby="pills-Accessories-tab">3...</div>
+            <div class="tab-pane fade" id="pills-Specifications" role="tabpanel" aria-labelledby="pills-Specifications-tab">3...</div>
+          </div>
+    </div>
+</section>
+
+ <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // JavaScript to show the bike animation
+      document.getElementById('testRideForm').addEventListener('submit', function (e) {
+          e.preventDefault(); // Prevent the form from submitting immediately
+
+          // Show the bike animation
+          const bike = document.getElementById('bikeAnimation');
+          bike.classList.remove('hidden');
+
+          // Optional: Hide the button text for better visuals
+          const submitButton = document.getElementById('submitButton');
+          submitButton.style.color = "transparent";
+
+          // Simulate a delay before actual form submission
+          setTimeout(() => {
+              this.submit(); // Submit the form after the animation
+          }, 2000);
+      });
+  </script>
+    <script>
+        // swiper element
+        const swiperEl = document.querySelector('swiper-container');
+      
+        // swiper parameters
+        const swiperParams = {
+          slidesPerView: 1,
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          },
+          on: {
+            init() {
+              // ...
+            },
+          },
+        };
+      
+        // now we need to assign all parameters to Swiper element
+        Object.assign(swiperEl, swiperParams);
+      
+        // and now initialize it
+        swiperEl.initialize();
+    </script>
+  
+</html>
