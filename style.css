@@ -170,7 +170,7 @@
             box-sizing: border-box;
         }
 
-        button {
+        .button-test {
             position: relative;
             background-color: #ff7f50;
             color: white;
@@ -239,7 +239,7 @@
 
 /* ================owl-carouse section================== */
 
-  .owl-carousel .item {
+ .owl-carousel .item {
             /* background: #4a90e2; */
             display: flex;
             align-items: center;
@@ -247,7 +247,7 @@
             padding: 10px;
             border: 0.5px solid #dbdbdb;
             border-radius: 4px;
-        }
+        } 
         .owl-nav button {
             background-color: #000;
             color: #fff;
