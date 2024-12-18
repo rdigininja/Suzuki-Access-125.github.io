@@ -1,0 +1,43 @@
+<div class="form-container">
+    <h1>Book a Test Ride</h1>
+    <form id="testRideForm" action="send_mail.php" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Your Name" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Your Email" required>
+
+        <label for="mobile">Mobile Number</label>
+        <input type="text" name="mobile" id="mobile" placeholder="Your Mobile Number" required>
+
+        <label for="location">Select Location</label>
+        <select name="location" id="location" required>
+            <option value="" disabled selected>Select your location</option>
+            <option value="Andheri West">Andheri West</option>
+            <option value="Andheri East">Andheri East</option>
+            <option value="Ghatkopar">Ghatkopar</option>
+            <option value="Thane">Thane</option>
+            <option value="Borivali">Borivali</option>
+            <option value="Goregaon">Goregaon</option>
+        </select>
+
+        <button type="submit" id="submitButton">
+          Book Free Test Ride
+          <div class="bike hidden" id="bikeAnimation"></div>
+      </button>
+    </form>
+</div>
+
+
+
+<h2>Share your details below to Get Quotation</h2>
+<p>
+    
+Dear Customer,
+
+Thank you for submitting the details. We have sent you the required information on your mail id.
+
+Regards
+
+Suzuki India.
+</p>
