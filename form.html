@@ -1,119 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Suzuki Access 125 Price & Finance</title>
-    <style>
-         /* Basic CSS for responsiveness */
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+<style>
+body {
+  margin: 0;
+}
 
-  .price-section,
-  .finance-section {
-    margin-bottom: 20px;
-  }
+.container {
+  width: 100%; 
+  overflow-x: hidden; 
+  white-space: nowrap; 
+}
 
-  .price-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
+.logo-strip {
+  display: inline-block; 
+  white-space: nowrap; 
+}
 
-  .slider-container {
-    width: 100%;
-    position: relative;
-  }
+.logo-strip img {
+  margin-right: 20px; 
+}
 
-  .slider-container output {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+@keyframes scroll {
+  from {
+    transform: translateX(0); 
   }
-
-  /* Media Query for smaller screens */
-  @media (max-width: 480px) {
-    .price-item {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  to {
+    transform: translateX(-100%); 
   }
-    </style>
+}
 
+.logo-strip {
+  animation: scroll 20s linear infinite; 
+}
+</style>
 </head>
 <body>
 
-    <h1>Suzuki Access 125 Price & Finance</h1>
-
-    <div class="price-section">
-        <div class="price-item">
-            <h2>On-Road Price</h2>
-            <p id="onRoadPriceDisplay">₹[Insert On-Road Price Here]</p> 
-        </div>
-        <div class="price-item">
-            <h2>Ex-Showroom Price</h2>
-            <p id="exShowroomPriceDisplay">₹[Insert Ex-Showroom Price Here]</p>
-        </div>
-        <div class="price-item">
-            <h2>Down Payment Options</h2>
-            <p>Starting from ₹[Insert Down Payment Range Here]</p>
-        </div>
-    </div>
+<div class="container">
+  <div class="logo-strip">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
+    <img src="" alt="Logo 1" width="600px" height="300px">
     
-    <div class="finance-section">
-        <h2>Finance Calculator</h2>
-        <form class="finance-form" id="financeForm">
-            <div class="form-group">
-                <label for="onRoadPrice" class="form-label">On-Road Price:</label>
-                <input type="number" id="onRoadPrice" class="form-input" value="[Insert Default On-Road Price Here]" required onchange="updatePriceDisplays()"> 
-            </div>
-    
-            <div class="form-group">
-                <label for="downPayment" class="form-label">Down Payment:</label>
-                <div class="slider-container">
-                    <input type="range" id="downPayment" class="form-input" min="5000" max="50000" step="1000" value="[Insert Default Down Payment Here]" oninput="downPaymentOutput.value = this.value; updatePriceDisplays()"> 
-                    <output id="downPaymentOutput"></output>
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <label for="loanTerm" class="form-label">Loan Term (Months):</label>
-                <div class="slider-container">
-                    <input type="range" id="loanTerm" class="form-input" min="12" max="60" step="6" value="36" oninput="loanTermOutput.value = this.value; calculateEMI()"> 
-                    <output id="loanTermOutput">36</output>
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <label for="interestRate" class="form-label">Interest Rate (%):</label>
-                <div class="slider-container">
-                    <input type="range" id="interestRate" class="form-input" min="5" max="20" step="0.5" value="10" oninput="interestRateOutput.value = this.value; calculateEMI()"> 
-                    <output id="interestRateOutput">10</output>
-                </div>
-            </div>
-    
-            <button type="button" class="btn" onclick="calculateEMI()">Calculate EMI</button>
-        </form>
-    
-        <div class="result" id="emiResult"></div>
-    </div>
-    
-  
-    <script>
-        function calculateEMI() {
-            const onRoadPrice = parseFloat(document.getElementById("onRoadPrice").value);
-            const downPayment = parseFloat(document.getElementById("downPayment").value);
-            const loanTerm = parseFloat(document.getElementById("loanTerm").value);
-            const interestRate = parseFloat(document.getElementById("interestRate").value) / 12 / 100; 
-
-            const principal = onRoadPrice - downPayment;
-            const emi = (principal * interestRate * Math.pow(1 + interestRate, loanTerm)) / (Math.pow(1 + interestRate, loanTerm) - 1);
-
-            document.getElementById("emiResult").innerHTML = `Estimated EMI: ₹${emi.toFixed(2)}`;
-        }
-    </script>
+  </div>
+</div>
 
 </body>
 </html>
