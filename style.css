@@ -1,13 +1,37 @@
 *{
     font-family: "Kanit", serif;
 }
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: #f44336;
+}
+
 .btn-1{
     background-color: #023690;
     color: #fff;
+    position: relative;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    overflow: hidden;
 }
+
 .btn-2{
     background-color: #000000;
     color: #fff;
+    position: relative;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    overflow: hidden;
 }
 
 .header{
