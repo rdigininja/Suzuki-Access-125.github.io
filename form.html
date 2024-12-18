@@ -1,247 +1,123 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suzuki Access 125 Price & Finance</title>
+    <style>
+         /* Basic CSS for responsiveness */
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
-     <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-     <!-- <link rel="stylesheet" href="style.css"> -->
-    
-     <!-- Owl Carousel CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  .price-section,
+  .finance-section {
+    margin-bottom: 20px;
+  }
 
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap" rel="stylesheet">
+  .price-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
 
-     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  .slider-container {
+    width: 100%;
+    position: relative;
+  }
 
-    <!-- Owl Carousel JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  .slider-container output {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-     <title>Document</title>
+  /* Media Query for smaller screens */
+  @media (max-width: 480px) {
+    .price-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+    </style>
 
 </head>
+<body>
 
+    <h1>Suzuki Access 125 Price & Finance</h1>
 
-<section ID="Features">
-	<div class="container">
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="pills-Overview-tab" data-bs-toggle="pill" data-bs-target="#pills-Overview" type="button" role="tab" aria-controls="pills-Overview" aria-selected="true">Features</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-Features-tab Specifications" data-bs-toggle="pill" data-bs-target="#pills-Features" type="button" role="tab" aria-controls="pills-Features" aria-selected="false">Specifications</button>
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-Overview" role="tabpanel" aria-labelledby="pills-Overview-tab">
-              <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Digital_-_520x420px-01_64c3c2c34da42.png" alt="Image 1">
-                        <h4 class="fea_heading">E20 COMPLIANT</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access-125-Digital---520x420px-headlamp_64ca1703c4f31.png" alt="Image 1">
-                        <h4 class="fea_heading">LED HEADLAMP</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access-125-Digital---520x420px-Positipon_Light_64ca1707dbc72.png" alt="Image 1">
-                        <h4 class="fea_heading">LED POSITION LIGHTS</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access-125-Features---520x420px-Side-Stand_64ca1a81e23bd.png" alt="Image 1">
-                        <h4 class="fea_heading">SIDE STAND INTERLOCK</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access-125-Digital---520x420px-fuel-tank-cap_64ca17a8cd948.png" alt="Image 1">
-                        <h4 class="fea_heading">PREMIUM CHROME EXTERNAL FUEL LID</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Bluetooth_Digital_Console_64ca17b09d79d.png" alt="Image 1">
-                        <h4 class="fea_heading">BLUETOOTH® ENABLED DIGITAL CONSOLE</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Engine_Start_Stop_64ca17be2893b.png" alt="Image 1">
-                        <h4 class="fea_heading">ENGINE START AND STOP SWITCH WITH SUZUKI EASY START SYSTEM</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Eco_Drive_Illumination_64ca17cc56882.png" alt="Image 1">
-                        <h4 class="fea_heading">ECO DRIVE ILLUMINATION**</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/USB_Socket-min_61b9c88ccd33c.jpg" alt="Image 1">
-                        <h4 class="fea_heading">USB SOCKET</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Front_rack_for_Storage_64ca17de68ab9.png" alt="Image 1">
-                        <h4 class="fea_heading">FRONT RACK FOR STORAGE</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Under_Seat_Storage_64ca17e808ef3.png" alt="Image 1">
-                        <h4 class="fea_heading">21.8L UNDER SEAT STORAGE</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Dual_Luggage_Hook_64ca17f48cf50.png" alt="Image 1">
-                        <h4 class="fea_heading">CONVENIENT DUAL LUGGAGE HOOKS</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/One_Push_central_lock-min_61b9c8052d53e.jpg" alt="Image 1">
-                        <h4 class="fea_heading">ONE PUSH CENTRAL LOCK SYSTEM</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Long_Seat_&_Long_Floor_Board_64ca17f969fd4.png" alt="Image 1">
-                        <h4 class="fea_heading">LONG SEAT & LONG FLOOR BOARD</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Features_-_520x420px-Retro_Seat_64ca1b1648c03.png" alt="Image 1">
-                        <h4 class="fea_heading">RETRO SEAT</h4>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="fea">
-                        <img src="img/feature/Access_125_Digital_-_520x420px-07_64c3c2c62c633.png" alt="Image 1">
-                        <h4 class="fea_heading">VOLTAGE METER</h4>
-                    </div>
-                </div>
-                
-                
-            </div>
-            </div>
-            <div class="tab-pane fade" id="pills-Features" role="tabpanel" aria-labelledby="pills-Features-tab">
-              <div class="container my-5">
-                <h2 class="text-center mb-4"><b>Access 125 Specifications</b></h2>
-        
-                <!-- Responsive Table -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered text-center">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Category</th>
-                                <th>Specification</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Engine Type</td>
-                                <td>4-Stroke, Single Cylinder, Air-Cooled</td>
-                            </tr>
-                            <tr>
-                                <td>Displacement</td>
-                                <td>124 cc</td>
-                            </tr>
-                            <tr>
-                                <td>Maximum Power</td>
-                                <td>8.7 PS @ 6750 rpm</td>
-                            </tr>
-                            <tr>
-                                <td>Maximum Torque</td>
-                                <td>10 Nm @ 5500 rpm</td>
-                            </tr>
-                            <tr>
-                                <td>Fuel System</td>
-                                <td>Fuel Injection (FI)</td>
-                            </tr>
-                            <tr>
-                                <td>Starting Mechanism</td>
-                                <td>Kick Start & Electric Start</td>
-                            </tr>
-                            <tr>
-                                <td>Transmission</td>
-                                <td>CVT Automatic</td>
-                            </tr>
-                            <tr>
-                                <td>Fuel Tank Capacity</td>
-                                <td>5.0 Liters</td>
-                            </tr>
-                            <tr>
-                                <td>Front Suspension</td>
-                                <td>Telescopic Front Fork</td>
-                            </tr>
-                            <tr>
-                                <td>Rear Suspension</td>
-                                <td>Swing Arm</td>
-                            </tr>
-                            <tr>
-                                <td>Front Brake</td>
-                                <td>Drum (120 mm) / Disc (190 mm - Optional)</td>
-                            </tr>
-                            <tr>
-                                <td>Rear Brake</td>
-                                <td>Drum (120 mm)</td>
-                            </tr>
-                            <tr>
-                                <td>Front Tyre</td>
-                                <td>90/90 - 12 Tubeless</td>
-                            </tr>
-                            <tr>
-                                <td>Rear Tyre</td>
-                                <td>90/100 - 10 Tubeless</td>
-                            </tr>
-                            <tr>
-                                <td>Kerb Weight</td>
-                                <td>103 kg (Drum), 104 kg (Disc)</td>
-                            </tr>
-                            <tr>
-                                <td>Ground Clearance</td>
-                                <td>160 mm</td>
-                            </tr>
-                            <tr>
-                                <td>Seat Height</td>
-                                <td>773 mm</td>
-                            </tr>
-                            <tr>
-                                <td>Mileage</td>
-                                <td>~45-52 km/l</td>
-                            </tr>
-                            <tr>
-                                <td>Colors</td>
-                                <td>
-                                    Pearl Mirage White, Metallic Matte Black, Metallic Matte Platinum Silver, <br>
-                                    Metallic Royal Bronze, Glass Sparkle Black, Metallic Dark Greenish Blue
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            </div>
-          </div>
+    <div class="price-section">
+        <div class="price-item">
+            <h2>On-Road Price</h2>
+            <p id="onRoadPriceDisplay">₹[Insert On-Road Price Here]</p> 
+        </div>
+        <div class="price-item">
+            <h2>Ex-Showroom Price</h2>
+            <p id="exShowroomPriceDisplay">₹[Insert Ex-Showroom Price Here]</p>
+        </div>
+        <div class="price-item">
+            <h2>Down Payment Options</h2>
+            <p>Starting from ₹[Insert Down Payment Range Here]</p>
+        </div>
     </div>
-</section>
+    
+    <div class="finance-section">
+        <h2>Finance Calculator</h2>
+        <form class="finance-form" id="financeForm">
+            <div class="form-group">
+                <label for="onRoadPrice" class="form-label">On-Road Price:</label>
+                <input type="number" id="onRoadPrice" class="form-input" value="[Insert Default On-Road Price Here]" required onchange="updatePriceDisplays()"> 
+            </div>
+    
+            <div class="form-group">
+                <label for="downPayment" class="form-label">Down Payment:</label>
+                <div class="slider-container">
+                    <input type="range" id="downPayment" class="form-input" min="5000" max="50000" step="1000" value="[Insert Default Down Payment Here]" oninput="downPaymentOutput.value = this.value; updatePriceDisplays()"> 
+                    <output id="downPaymentOutput"></output>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="loanTerm" class="form-label">Loan Term (Months):</label>
+                <div class="slider-container">
+                    <input type="range" id="loanTerm" class="form-input" min="12" max="60" step="6" value="36" oninput="loanTermOutput.value = this.value; calculateEMI()"> 
+                    <output id="loanTermOutput">36</output>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="interestRate" class="form-label">Interest Rate (%):</label>
+                <div class="slider-container">
+                    <input type="range" id="interestRate" class="form-input" min="5" max="20" step="0.5" value="10" oninput="interestRateOutput.value = this.value; calculateEMI()"> 
+                    <output id="interestRateOutput">10</output>
+                </div>
+            </div>
+    
+            <button type="button" class="btn" onclick="calculateEMI()">Calculate EMI</button>
+        </form>
+    
+        <div class="result" id="emiResult"></div>
+    </div>
+    
+  
+    <script>
+        function calculateEMI() {
+            const onRoadPrice = parseFloat(document.getElementById("onRoadPrice").value);
+            const downPayment = parseFloat(document.getElementById("downPayment").value);
+            const loanTerm = parseFloat(document.getElementById("loanTerm").value);
+            const interestRate = parseFloat(document.getElementById("interestRate").value) / 12 / 100; 
+
+            const principal = onRoadPrice - downPayment;
+            const emi = (principal * interestRate * Math.pow(1 + interestRate, loanTerm)) / (Math.pow(1 + interestRate, loanTerm) - 1);
+
+            document.getElementById("emiResult").innerHTML = `Estimated EMI: ₹${emi.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
+
 
 
 

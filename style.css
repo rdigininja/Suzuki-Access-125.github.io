@@ -8,6 +8,10 @@ a:hover{
     color: #f44336;
 }
 
+section{
+    padding: 50px 10px;
+}
+
 .btn-1{
     background-color: #023690;
     color: #fff;
@@ -33,6 +37,25 @@ a:hover{
     font-size: 1rem;
     overflow: hidden;
 }
+
+.heading-3{
+    font-size: 38px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.heading-5{
+    font-size: 24px;
+    font-weight: 500;
+    color: #023690;
+}
+
+#Features{
+    background-color: #eeeeee;
+}
+
+
+/* =========================== */
 
 .header{
     &.inverted {
@@ -285,4 +308,88 @@ a:hover{
             font-weight: 500;
             letter-spacing: 0.5px;
             text-align: center;
+        }
+
+        .nav-link {
+            font-size: 20px;
+            color: #000;
+        }
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            color: #fff;
+            background-color: #023690;
+
+        }
+
+        /* ==============finance & loan============== */
+        .vb_box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 0.5px solid #ff480580;
+            border-radius: 5px;
+            background-color: #ffded3;
+            width: 40%;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .price_vb {
+            animation: zoomInOut 2s infinite; 
+          }
+          
+          @keyframes zoomInOut {
+            0% {
+              transform: scale(1); 
+            }
+            50% {
+              transform: scale(1.2); 
+            }
+            100% {
+              transform: scale(1); 
+            }
+          }
+
+        .heading_price{
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .price-section,
+        .finance-section {
+          margin-bottom: 20px;
+          padding: 20px;
+          border: 1px solid #465463;
+        }
+      
+        .price-item {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        }
+      
+        .slider-container {
+          width: 100%;
+          position: relative;
+        }
+      
+        .slider-container output {
+          position: absolute;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .finance-form .form-group label{
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+        }
+      
+        /* Media Query for smaller screens */
+        @media (max-width: 480px) {
+          .price-item {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         }
