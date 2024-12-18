@@ -13,7 +13,7 @@ section{
 }
 
 .btn-1{
-    background-color: #023690;
+    background-color: #182955;
     color: #fff;
     position: relative;
     border: none;
@@ -47,7 +47,7 @@ section{
 .heading-5{
     font-size: 24px;
     font-weight: 500;
-    color: #023690;
+    color: #182955;
 }
 
 #Features{
@@ -123,7 +123,7 @@ section{
 .bike-info span{
     font-size: 15px;
     font-weight:600;
-    color:#0512ce
+    color:#182955;
 }
 .bike-info p{
     font-size: 28px;
@@ -137,7 +137,7 @@ section{
 .bike-color h3{
     font-size: 15px;
     font-weight: 600;
-    color: #0512ce;
+    color: #182955;
 }
 
 .bike-color ul{
@@ -302,7 +302,7 @@ section{
         }
     
         .fea_heading{
-            color: #023690;
+            color: #182955;
             margin-top: 10PX;
             font-size: 16px;
             font-weight: 500;
@@ -316,7 +316,7 @@ section{
         }
         .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
             color: #fff;
-            background-color: #023690;
+            background-color:#182955;
 
         }
 
@@ -392,4 +392,11 @@ section{
             flex-direction: column;
             align-items: flex-start;
           }
+        }
+
+
+        /* ===================service========================== */
+        .service{
+            background-color: #182955;
+            color: #fff;
         }
