@@ -5,8 +5,8 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer;
+use PHPMailer\Exception;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect form inputs
