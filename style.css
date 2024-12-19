@@ -475,6 +475,7 @@ section{
           }
           footer ul li {
             list-style: none;
+            padding-bottom: 10px;
 
           }
 
@@ -485,4 +486,50 @@ section{
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
+          }
+
+          /* ==================offer_banner============== */
+          #offer_banner{
+            position: relative;
+            background-image: url('img/placeholderBg.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+          }
+          #offer_banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(24, 41, 85, 0.6); /* Blue shade with 60% opacity */
+            z-index: -1; /* Places it beneath the content */
+          }
+          .offer_banner{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2 !important; /* Ensures content is above the overlay */
+          }
+          .cell-1{
+            width: 80%;
+            color: white; /* White text for contrast against the blue background */
+          }
+          .cell-2{
+            width: 20%;
+          }
+          .offer-btn-2 {
+            background-color: #ffffff; /* Matches the overlay shade */
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+          }
+          
+          .offer-btn-2:hover {
+            background-color: #0f1b3c; /* Darker shade for hover effect */
           }
